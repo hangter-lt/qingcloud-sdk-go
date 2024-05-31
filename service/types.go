@@ -2606,6 +2606,7 @@ type S2Server struct {
 	// TransitionStatus's available values: creating, updating, suspending, resuming, poweroffing
 	TransitionStatus *string `json:"transition_status" name:"transition_status"`
 	VxNet            *VxNet  `json:"vxnet" name:"vxnet"`
+	VxnetId		*string `json:"vxnet_id" name:"vxnet_id"`
 }
 
 func (v *S2Server) Validate() error {
