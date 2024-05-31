@@ -2595,7 +2595,8 @@ type S2Server struct {
 	PrivateIP  *string `json:"private_ip" name:"private_ip"`
 	S2ServerID *string `json:"s2_server_id" name:"s2_server_id"`
 	// S2ServerType's available values: 0, 1, 2, 3
-	S2ServerType *int `json:"s2_server_type" name:"s2_server_type"`
+	S2ServerType *int    `json:"s2_server_type" name:"s2_server_type"`
+	S2ServerName *string `json:"s2_server_name" name:"s2_server_name"`
 	// ServiceType's available values: vsan
 	ServiceType *string `json:"service_type" name:"service_type"`
 	// Status's available values: pending, active, poweroffed, suspended, deleted, ceased
@@ -2735,6 +2736,17 @@ type S2SharedTarget struct {
 	StatusTime       *time.Time `json:"status_time" name:"status_time" format:"ISO 8601"`
 	// TargetType's available values: ISCSI, NFS
 	TargetType *string `json:"target_type" name:"target_type"`
+	Volumes    []*struct {
+		S2ServerID     *string `json:"s2_server_id" name:"s2_server_id"`
+		SharedTargetID *string `json:"shared_target_id" name:"shared_target_id"`
+		VolumeName     *string `json:"volume_name" name:"volume_name"`
+		VolumeType     *int    `json:"volume_type" name:"volume_type"`
+		LunID          *string `json:"lun_id" name:"lun_id"`
+		Mode           *string `json:"mode" name:"mode"`
+		VolumeID       *string `json:"volume_id" name:"volume_id"`
+		Owner          *string `json:"owner" name:"owner"`
+		Size           *int    `json:"size" name:"size"`
+	} `json:"volumes" name:"volumes"`
 }
 
 func (v *S2SharedTarget) Validate() error {
