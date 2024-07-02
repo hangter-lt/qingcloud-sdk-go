@@ -1308,6 +1308,12 @@ type LoadBalancer struct {
 	// TransitionStatus's available values: creating, starting, stopping, updating, suspending, resuming, deleting
 	TransitionStatus *string `json:"transition_status" name:"transition_status"`
 	VxNetID          *string `json:"vxnet_id" name:"vxnet_id"`
+	VxNet            *struct {
+		VxNetName *string `json:"vxnet_name" name:"vxnet_name"`
+		VxNetType *int    `json:"vxnet_type" name:"vxnet_type"`
+		PrivateIp *string `json:"private_ip" name:"private_ip"`
+		VxNetID   *string `json:"vxnet_id" name:"vxnet_id"`
+	}
 }
 
 func (v *LoadBalancer) Validate() error {
